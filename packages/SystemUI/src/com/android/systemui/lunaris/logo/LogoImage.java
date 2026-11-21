@@ -225,7 +225,7 @@ public abstract class LogoImage extends ImageView implements DarkReceiver {
         switch (mLogoStyle) {
             case 0:
             default:
-                drawable = mContext.getResources().getDrawable(R.drawable.ic_android_logo);
+                drawable = mContext.getResources().getDrawable(R.drawable.ic_gazaos_logo);
                 break;
             case 1:
                 drawable = mContext.getResources().getDrawable(R.drawable.ic_adidas);
@@ -322,6 +322,9 @@ public abstract class LogoImage extends ImageView implements DarkReceiver {
                 break;
             case 32:
                 drawable = mContext.getResources().getDrawable(R.drawable.ic_amogus);
+                break;
+            case 33:
+                drawable = mContext.getResources().getDrawable(R.drawable.ic_android_logo);
                 break;
         }
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 GazaOS
+     Licensed under the Apache License, Version 2.0
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="16dp"
+    android:width="16dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- GazaOS stylized dynamic crest -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M12,2L3,7v6c0,5.55 3.84,10.74 9,12c5.16,-1.26 9,-6.45 9,-12V7L12,2zM12,4.18l6,3.33v4.49c0,4.25 -2.78,8.27 -6,9.55c-3.22,-1.28 -6,-5.3 -6,-9.55V7.51L12,4.18zM12,7c-2.21,0 -4,1.79 -4,4c0,1.52 0.85,2.84 2.1,3.5l-0.6,2.5h5l-0.6,-2.5c1.25,-0.66 2.1,-1.98 2.1,-3.5C16,8.79 14.21,7 12,7z"/>
+</vector>
