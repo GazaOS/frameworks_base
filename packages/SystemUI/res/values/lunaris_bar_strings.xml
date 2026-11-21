@@ -5,14 +5,14 @@
     <string name="lunaris_bar_barcode_error">This content cannot be encoded in the selected format.</string>
     <string name="lunaris_bar_charging">Charging</string>
     <string name="lunaris_bar_minutes_value">%1$d min</string>
-    <string name="lunaris_bar_no_shortcuts">Add apps, contacts, or actions in LunarisBar settings.</string>
+    <string name="lunaris_bar_no_shortcuts">Add apps, contacts, or actions in GazaBar settings.</string>
     <string name="lunaris_bar_off">Off</string>
     <string name="lunaris_bar_on">On</string>
     <string name="lunaris_bar_on_battery">On battery</string>
     <string name="lunaris_bar_open">Open</string>
     <string name="lunaris_bar_start_timer">Start timer</string>
-    <string name="lunaris_bar_title">LunarisBar</string>
-    <string name="lunaris_bar_widget_unavailable">This widget is unavailable. Add it again in LunarisBar settings.</string>
+    <string name="lunaris_bar_title">GazaBar</string>
+    <string name="lunaris_bar_widget_unavailable">This widget is unavailable. Add it again in GazaBar settings.</string>
     <string name="lunaris_bar_screen_sharing">Screen sharing</string>
     <string name="lunaris_bar_privacy">Camera and microphone</string>
     <string name="lunaris_bar_privacy_settings">Privacy settings</string>
