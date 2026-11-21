@@ -91,12 +91,18 @@ public class UserProfileUtils {
     public static String getDeviceName() {
         String marketName = SystemProperties.get("ro.product.marketname");
         String modelName = SystemProperties.get("ro.product.model");
+        String gazaDevice = SystemProperties.get("ro.gazaos.device");
+        String crDevice = SystemProperties.get("ro.crdroid.device");
         String romDevice = SystemProperties.get("ro.lunaris.device");
 
         if (marketName != null && !marketName.isEmpty()) {
             return marketName;
         } else if (modelName != null && !modelName.isEmpty()) {
             return modelName;
+        } else if (gazaDevice != null && !gazaDevice.isEmpty()) {
+            return gazaDevice;
+        } else if (crDevice != null && !crDevice.isEmpty()) {
+            return crDevice;
         } else if (romDevice != null && !romDevice.isEmpty()) {
             return romDevice;
         } else {
