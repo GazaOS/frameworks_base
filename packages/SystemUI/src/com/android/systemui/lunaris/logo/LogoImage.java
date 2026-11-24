@@ -326,6 +326,9 @@ public abstract class LogoImage extends ImageView implements DarkReceiver {
             case 33:
                 drawable = mContext.getResources().getDrawable(R.drawable.ic_android_logo);
                 break;
+            case 34:
+                drawable = mContext.getResources().getDrawable(R.drawable.ic_palestine_flag);
+                break;
         }
 
         if (drawable == null) return;
