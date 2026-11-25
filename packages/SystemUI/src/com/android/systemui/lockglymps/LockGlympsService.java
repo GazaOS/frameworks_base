@@ -62,7 +62,7 @@ public class LockGlympsService extends Service {
     private static final String LOCK_GLYMPS_TIMER_INTERVAL = "lock_glymps_timer_interval";
     private static final String LOCK_GLYMPS_WALLPAPER_TARGET = "lock_glymps_wallpaper_target";
     
-    private static final String STORAGE_FOLDER = "LunarisGlymps";
+    private static final String STORAGE_FOLDER = "GazaGlymps";
     
     private static final int TARGET_LOCK_SCREEN = 0;
     private static final int TARGET_HOME_SCREEN = 1;

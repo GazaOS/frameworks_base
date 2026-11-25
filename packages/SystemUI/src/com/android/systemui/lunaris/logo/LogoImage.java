@@ -54,7 +54,7 @@ public abstract class LogoImage extends ImageView implements DarkReceiver {
 
     private static final String TAG = "LogoImage";
 
-    public static final int LOGO_STYLE_CUSTOM = 33;
+    public static final int LOGO_STYLE_CUSTOM = 35;
 
     private Context mContext;
 
@@ -333,8 +333,12 @@ public abstract class LogoImage extends ImageView implements DarkReceiver {
 
         if (drawable == null) return;
 
+        clearColorFilter();
+        setImageTintList(null);
         if (mLogoColor == 0) {
-            drawable.setTint(mTintColor);
+            if (mLogoStyle != 34) {
+                drawable.setTint(mTintColor);
+            }
         } else if (mLogoColor == 1) {
             ColorStateList colorAccent = Utils.getColorAccent(mContext);
             setImageTintList(colorAccent);
