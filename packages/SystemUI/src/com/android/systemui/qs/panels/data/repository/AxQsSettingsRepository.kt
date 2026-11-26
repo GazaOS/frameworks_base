@@ -191,13 +191,13 @@ constructor(
     val miuiQsAnimation: StateFlow<Boolean> =
         boolSetting(
             MIUI_QS_ANIMATION,
-            default = false,
+            default = true,
             initialValue = readMiuiAnimation(MIUI_QS_ANIMATION),
         )
     val miuiSplitQsAnimation: StateFlow<Boolean> =
         boolSetting(
             MIUI_SPLIT_QS_ANIMATION,
-            default = false,
+            default = true,
             initialValue = readMiuiAnimation(MIUI_SPLIT_QS_ANIMATION),
         )
     val sharedQsLayout: StateFlow<Boolean> = boolSetting(SHARED_QS_LAYOUT, false)
@@ -791,7 +791,7 @@ constructor(
     }
 
     private fun readMiuiAnimation(key: String): Boolean =
-        secureSettings.getIntForUser(key, 0, userRepository.getSelectedUserInfo().id) != 0
+        secureSettings.getIntForUser(key, 1, userRepository.getSelectedUserInfo().id) != 0
 
     private fun boolSetting(
         key: String,
