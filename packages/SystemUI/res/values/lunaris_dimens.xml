@@ -42,7 +42,7 @@
     <dimen name="key_text_shadow_dy">0.5dp</dimen>
     <dimen name="key_text_shadow_radius">0.5dp</dimen>
     <dimen name="launcher_remoteviews_card_corner_radius">24.0dp</dimen>
-    <dimen name="lockscreen_remoteviews_card_corner_radius">28.0dp</dimen>
+    <dimen name="lockscreen_remoteviews_card_corner_radius">24.0dp</dimen>
     <dimen name="non_remoteviews_card_padding_start">16.0dp</dimen>
     <dimen name="opa_dot_diam">10.0dp</dimen>
     <dimen name="opa_lockscreen_padding_bottom">20.0dp</dimen>
