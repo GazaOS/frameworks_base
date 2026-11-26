@@ -19,5 +19,5 @@
     android:shape="rectangle">
     <!-- We don't actually draw anything, just expressing the shape for clipping. -->
     <solid android:color="#0000"/>
-    <corners android:radius="10000dp"/>  <!-- fully-rounded radius -->
+    <corners android:radius="18dp"/>
 </shape>
