@@ -229,14 +229,14 @@ class ClockStyle @JvmOverloads constructor(
     private var homeClockMarginStart: Int? = null
     private var clockTiltX = DEFAULT_TILT
     private var clockTiltY = DEFAULT_TILT
-    private var parallaxEnabled = false
+    private var parallaxEnabled = true
     private var parallaxIntensityPercent = ClockParallaxSettings.DEFAULT_INTENSITY
     private var parallaxRotationX = 0f
     private var parallaxRotationY = 0f
     private var clockRotation = DEFAULT_ROTATION
 
     private var gradientEnabled = false
-    private var hyperBlurEnabled = false
+    private var hyperBlurEnabled = true
     private var textGlassEnabled = false
     private var textGlassIntensity = ClockGlass.DEFAULT_INTENSITY
     private var textGlassLift = ClockGlass.DEFAULT_LIFT
@@ -1184,7 +1184,7 @@ class ClockStyle @JvmOverloads constructor(
                 applyClockColors()
             }
             CLOCK_HYPER_BLUR_KEY -> {
-                hyperBlurEnabled = TunerService.parseInteger(newValue, 0) != 0
+                hyperBlurEnabled = TunerService.parseInteger(newValue, 1) != 0
                 applyClockColors()
             }
             CLOCK_GRADIENT_COLOR_START_KEY -> {
@@ -1216,7 +1216,7 @@ class ClockStyle @JvmOverloads constructor(
                 applyClockTransform()
             }
             ClockParallaxSettings.ENABLED -> {
-                parallaxEnabled = TunerService.parseInteger(newValue, 0) != 0
+                parallaxEnabled = TunerService.parseInteger(newValue, 1) != 0
                 updateClockParallax()
                 applyClockTransform()
             }
@@ -2367,7 +2367,7 @@ class ClockStyle @JvmOverloads constructor(
 
         private const val DOZE_PULSE_ACTION = "com.android.systemui.doze.pulse"
 
-        private const val DEFAULT_STYLE = 0
+        private const val DEFAULT_STYLE = 93
         private const val DEFAULT_OPACITY = 100
         private const val DEFAULT_SHADOW_COLOR = Color.BLACK
         private const val DEFAULT_SHADOW_SOFTNESS = 8

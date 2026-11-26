@@ -58,5 +58,10 @@
         <item>@font/spaceage</item>
         <item>@font/subway</item>
         <item>@font/tallclock</item>
+        <item>@font/mi_clock</item>
+        <item>@font/mi_clock_mono</item>
+        <item>@font/mi_clock_thin</item>
+        <item>@font/mi_sans_latin</item>
+        <item>@font/mi_type_clock</item>
     </array>
 </resources>
