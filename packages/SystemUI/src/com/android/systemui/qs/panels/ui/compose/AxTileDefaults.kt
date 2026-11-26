@@ -85,7 +85,7 @@ import com.android.systemui.qs.panels.ui.viewmodel.AccessibilityUiState
 import com.android.systemui.qs.ui.compose.borderOnFocus
 
 val LocalTileScale = staticCompositionLocalOf { 1f }
-val LocalAxQsTileStyle = staticCompositionLocalOf { AxQsTileStyle.PILL }
+val LocalAxQsTileStyle = staticCompositionLocalOf { AxQsTileStyle.ROUNDED_SQUARE }
 val LocalLunarisQsBluetoothTileStyle =
     staticCompositionLocalOf { LunarisQsBluetoothTileStyle.CLASSIC }
 

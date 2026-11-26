@@ -339,10 +339,10 @@ constructor(
             .stateIn(applicationScope, SharingStarted.Eagerly, LunarisQsGradientSettings())
 
     val tileStyle: StateFlow<AxQsTileStyle> =
-        intSetting(TILE_STYLE, AxQsTileStyle.PILL.settingValue)
+        intSetting(TILE_STYLE, AxQsTileStyle.ROUNDED_SQUARE.settingValue)
             .map(AxQsTileStyle::fromSetting)
             .distinctUntilChanged()
-            .stateIn(applicationScope, SharingStarted.Eagerly, AxQsTileStyle.PILL)
+            .stateIn(applicationScope, SharingStarted.Eagerly, AxQsTileStyle.ROUNDED_SQUARE)
 
     val spacing: StateFlow<LunarisQsSpacing> =
         combine(
