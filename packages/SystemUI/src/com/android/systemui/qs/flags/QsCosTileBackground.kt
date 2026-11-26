@@ -29,7 +29,7 @@ object QsCosTileBackground {
             Settings.Secure.getIntForUser(
                 context.contentResolver,
                 SETTING,
-                0,
+                1,
                 UserHandle.USER_CURRENT,
             ) != 0
 }

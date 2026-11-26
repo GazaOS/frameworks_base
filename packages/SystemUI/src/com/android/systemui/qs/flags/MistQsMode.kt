@@ -40,7 +40,7 @@ object MistQsMode {
 
     @JvmStatic
     fun readEnabled(context: Context, userId: Int): Boolean =
-        Settings.System.getIntForUser(context.contentResolver, SETTING, 0, userId) == 1
+        Settings.System.getIntForUser(context.contentResolver, SETTING, 1, userId) == 1
 
     private fun initializeClockStyle(context: Context, userId: Int) {
         val savedStyle =

@@ -19,6 +19,7 @@ package com.android.systemui.statusbar
 import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.content.res.Resources
+import android.database.ContentObserver
 import android.gui.EarlyWakeupInfo
 import android.os.Binder
 import android.os.Build
@@ -50,23 +51,50 @@ import kotlinx.coroutines.flow.*
 
 @SysUISingleton
 open class BlurUtils
-@Inject
-constructor(
+private constructor(
     @Main resources: Resources,
     blurConfig: BlurConfig,
     private val crossWindowBlurListeners: CrossWindowBlurListeners,
     dumpManager: DumpManager,
-    private val secureSettings: SecureSettings,
+    private val secureSettings: SecureSettings?,
+    @Suppress("UNUSED_PARAMETER") unusedMarker: Boolean,
 ) : Dumpable {
-    val minBlurRadius = resources.getDimensionPixelSize(R.dimen.min_window_blur_radius).toFloat()
-    val maxBlurRadius: Float 
-        get() = secureSettings.getFloatForUser("system_blur_radius", 34f, UserHandle.USER_CURRENT)
+    @Inject
+    constructor(
+        @Main resources: Resources,
+        blurConfig: BlurConfig,
+        crossWindowBlurListeners: CrossWindowBlurListeners,
+        dumpManager: DumpManager,
+        secureSettings: SecureSettings,
+    ) : this(resources, blurConfig, crossWindowBlurListeners, dumpManager, secureSettings, true)
 
-    val maxBlurRadiusFlow: Flow<Float> = secureSettings
-        .observerFlow("system_blur_radius")
-        .onStart { emit(Unit) }
-        .map { maxBlurRadius }
-        .distinctUntilChanged()
+    constructor(
+        resources: Resources,
+        blurConfig: BlurConfig,
+        crossWindowBlurListeners: CrossWindowBlurListeners,
+        dumpManager: DumpManager,
+    ) : this(resources, blurConfig, crossWindowBlurListeners, dumpManager, null, true)
+    val minBlurRadius = resources.getDimensionPixelSize(R.dimen.min_window_blur_radius).toFloat()
+
+    @Volatile
+    private var cachedMaxBlurRadius: Float =
+        secureSettings?.getFloatForUser("system_blur_radius", 34f, UserHandle.USER_CURRENT) ?: 34f
+
+    val maxBlurRadius: Float
+        get() = cachedMaxBlurRadius
+
+    val maxBlurRadiusFlow: Flow<Float> =
+        secureSettings
+            ?.observerFlow("system_blur_radius")
+            ?.onStart { emit(Unit) }
+            ?.map {
+                val radius = secureSettings.getFloatForUser(
+                    "system_blur_radius", 34f, UserHandle.USER_CURRENT)
+                cachedMaxBlurRadius = radius
+                radius
+            }
+            ?.distinctUntilChanged()
+            ?: flowOf(34f)
 
     private var lastAppliedBlur = 0
     private var lastTargetViewRootImpl: ViewRootImpl? = null
@@ -86,6 +114,16 @@ constructor(
     init {
         dumpManager.registerDumpable(this)
         earlyWakeupInfo.token = Binder()
+        secureSettings?.registerContentObserverForUserAsync(
+            "system_blur_radius",
+            object : ContentObserver(null) {
+                override fun onChange(selfChange: Boolean) {
+                    cachedMaxBlurRadius = secureSettings.getFloatForUser(
+                        "system_blur_radius", 34f, UserHandle.USER_CURRENT)
+                }
+            },
+            UserHandle.USER_ALL,
+        )
     }
 
     @VisibleForTesting

@@ -274,7 +274,7 @@ constructor(
     val sliderStrokeStyle: StateFlow<Boolean> = strokeStyleSetting(SLIDER_STROKE_STYLE)
     val sliderStrokeWidth: StateFlow<Int> =
         strokeWidthSetting(SLIDER_STROKE_WIDTH, LunarisQsStrokeWidths.DEFAULT_SLIDER)
-    val cosTileBackground: StateFlow<Boolean> = boolSetting(COS_TILE_BACKGROUND, false)
+    val cosTileBackground: StateFlow<Boolean> = boolSetting(COS_TILE_BACKGROUND, true)
     val iconOnlyActiveColor: StateFlow<Boolean> = boolSetting(ICON_ONLY_ACTIVE_COLOR, false)
 
     val fullColorDualTargetTiles: StateFlow<Boolean> =

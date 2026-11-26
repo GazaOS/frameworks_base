@@ -2463,6 +2463,13 @@ public class DisplayModeDirector {
                 mVotesStorage.updateGlobalVote(Vote.PRIORITY_FLICKER_REFRESH_RATE_SWITCH, null);
                 return;
             }
+            if (mDefaultDisplayState != Display.STATE_UNKNOWN && !isDeviceActive()) {
+                if (mLoggingEnabled) {
+                    Slog.d(TAG, "Display not on (state=" + mDefaultDisplayState
+                            + "), keeping flicker refresh rate votes");
+                }
+                return;
+            }
             Vote refreshRateVote = null;
             Vote refreshRateSwitchingVote = null;
 
@@ -2550,6 +2557,12 @@ public class DisplayModeDirector {
             if (mDefaultDisplayState != state) {
                 mDefaultDisplayState = state;
                 updateSensorStatus();
+                if (isDeviceActive()) {
+                    // Votes are frozen while the display is not on; refresh them now.
+                    synchronized (mLock) {
+                        updateFlickerRefreshRateVotes();
+                    }
+                }
             }
         }
 

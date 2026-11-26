@@ -333,17 +333,18 @@ public abstract class LogoImage extends ImageView implements DarkReceiver {
 
         if (drawable == null) return;
 
+        drawable = drawable.mutate();
         clearColorFilter();
         setImageTintList(null);
-        if (mLogoColor == 0) {
-            if (mLogoStyle != 34) {
+        if (mLogoStyle != 34) {
+            if (mLogoColor == 0) {
                 drawable.setTint(mTintColor);
+            } else if (mLogoColor == 1) {
+                ColorStateList colorAccent = Utils.getColorAccent(mContext);
+                setImageTintList(colorAccent);
+            } else {
+                setColorFilter(mLogoColorCustom, PorterDuff.Mode.SRC_IN);
             }
-        } else if (mLogoColor == 1) {
-            ColorStateList colorAccent = Utils.getColorAccent(mContext);
-            setImageTintList(colorAccent);
-        } else {
-            setColorFilter(mLogoColorCustom, PorterDuff.Mode.SRC_IN);
         }
         setImageDrawable(drawable);
     }
