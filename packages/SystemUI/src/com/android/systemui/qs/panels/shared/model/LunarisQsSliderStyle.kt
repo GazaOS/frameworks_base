@@ -28,7 +28,7 @@ enum class LunarisQsSliderStyle(val settingValue: Int) {
 
     companion object {
         fun fromSetting(value: Int): LunarisQsSliderStyle =
-            entries.firstOrNull { it.settingValue == value } ?: M3_EXPRESSIVE
+            entries.firstOrNull { it.settingValue == value } ?: ROUNDED_SQUARE
     }
 }
 

@@ -763,7 +763,7 @@ public class QSImpl implements QS, CommandQueue.Callbacks, StatusBarStateControl
 
     private float calculateAlphaProgress(float panelExpansionFraction) {
         boolean isLegacySplitShade = android.provider.Settings.System.getInt(
-                getContext().getContentResolver(), Settings.System.QS_SPLIT_SHADE, 0) != 0;
+                getContext().getContentResolver(), Settings.System.QS_SPLIT_SHADE, 1) != 0;
         if (mIsSmallScreen || isLegacySplitShade) {
             // Small screens or legacy split shade. QS alpha is not animated.
             return 1;

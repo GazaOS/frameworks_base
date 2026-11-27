@@ -151,7 +151,7 @@ constructor(
         userRepository.selectedUserInfo.flatMapLatest { user ->
             systemSettings.observerFlow(user.id, Settings.System.QS_SPLIT_SHADE)
                 .onStart { emit(Unit) }
-                .map { systemSettings.getIntForUser(Settings.System.QS_SPLIT_SHADE, 0, user.id) }
+                .map { systemSettings.getIntForUser(Settings.System.QS_SPLIT_SHADE, 1, user.id) }
         }.flowOn(backgroundDispatcher)
             .map(AxQsPanelMode::fromSetting)
             .distinctUntilChanged()
@@ -159,7 +159,7 @@ constructor(
                 applicationScope,
                 SharingStarted.Eagerly,
                 AxQsPanelMode.fromSetting(systemSettings.getIntForUser(
-                    Settings.System.QS_SPLIT_SHADE, 0, userRepository.getSelectedUserInfo().id
+                    Settings.System.QS_SPLIT_SHADE, 1, userRepository.getSelectedUserInfo().id
                 )),
             )
 
@@ -187,7 +187,15 @@ constructor(
             )
 
     val quickPanelOnLeft: StateFlow<Boolean> = boolSetting(QUICK_PANEL_ON_LEFT, false)
-    val panelSwipeEnabled: StateFlow<Boolean> = boolSetting(PANEL_SWIPE_ENABLED, false)
+    val panelSwipeEnabled: StateFlow<Boolean> =
+        boolSetting(
+            PANEL_SWIPE_ENABLED,
+            default = true,
+            initialValue =
+                secureSettings.getIntForUser(
+                    PANEL_SWIPE_ENABLED, 1, userRepository.getSelectedUserInfo().id
+                ) != 0,
+        )
     val miuiQsAnimation: StateFlow<Boolean> =
         boolSetting(
             MIUI_QS_ANIMATION,
@@ -364,10 +372,10 @@ constructor(
         sliderStyleSettings()
 
     val bluetoothTileStyle: StateFlow<LunarisQsBluetoothTileStyle> =
-        intSetting(BLUETOOTH_TILE_STYLE, LunarisQsBluetoothTileStyle.CLASSIC.settingValue)
+        intSetting(BLUETOOTH_TILE_STYLE, LunarisQsBluetoothTileStyle.CENTERED_ARTWORK.settingValue)
             .map(LunarisQsBluetoothTileStyle::fromSetting)
             .distinctUntilChanged()
-            .stateIn(applicationScope, SharingStarted.Eagerly, LunarisQsBluetoothTileStyle.CLASSIC)
+            .stateIn(applicationScope, SharingStarted.Eagerly, LunarisQsBluetoothTileStyle.CENTERED_ARTWORK)
 
     val mediaStyle: StateFlow<LunarisQsMediaStyle> =
         intSetting(MEDIA_STYLE, LunarisQsMediaStyle.ARTWORK.settingValue)
@@ -905,7 +913,7 @@ constructor(
                                     LunarisQsSliderStyle.fromSetting(
                                         secureSettings.getIntForUser(
                                             key,
-                                            LunarisQsSliderStyle.M3_EXPRESSIVE.settingValue,
+                                            LunarisQsSliderStyle.ROUNDED_SQUARE.settingValue,
                                             user.id,
                                         )
                                     )

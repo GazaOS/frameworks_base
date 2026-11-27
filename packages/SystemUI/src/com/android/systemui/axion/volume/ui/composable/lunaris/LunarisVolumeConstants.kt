@@ -19,13 +19,13 @@ package com.android.systemui.axion.volume.ui.composable.lunaris
 import androidx.compose.ui.unit.dp
 
 internal val LunarisPanelWidth = 57.dp
-internal val LunarisPanelCornerRadius = 28.dp
-internal val LunarisExpandedCornerRadius = 28.dp
+internal val LunarisPanelCornerRadius = 24.dp
+internal val LunarisExpandedCornerRadius = 24.dp
 
 internal val LunarisSliderHeight = 200.dp
 internal val LunarisSliderWidth = 40.dp
 
-internal val LunarisTrackCornerPercent = 50
+internal val LunarisTrackCornerPercent = 38
 
 internal val LunarisIconSize = 18.dp
 internal val LunarisSmallIconSize = 15.dp

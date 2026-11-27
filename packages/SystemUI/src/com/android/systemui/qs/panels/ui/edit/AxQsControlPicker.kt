@@ -563,7 +563,7 @@ private fun AxAddItemCell(
     val bluetoothCard = item is AxAddItem.Tile && item.isBluetoothCard
     val controlStyle =
         (item as? AxAddItem.Control)?.control?.let(sliderStyle)
-            ?: LunarisQsSliderStyle.M3_EXPRESSIVE
+            ?: LunarisQsSliderStyle.ROUNDED_SQUARE
     val previewShape =
         when (item) {
             is AxAddItem.Folder -> axQsTileShape(span, LocalAxQsTileStyle.current)

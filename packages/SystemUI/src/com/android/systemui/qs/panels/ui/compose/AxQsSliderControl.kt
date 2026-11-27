@@ -230,7 +230,7 @@ private fun Modifier.interceptParentScroll(enabled: Boolean, view: View): Modifi
 internal fun axQsControlShape(
     control: AxQsControl,
     span: AxQsSpan,
-    sliderStyle: LunarisQsSliderStyle = LunarisQsSliderStyle.M3_EXPRESSIVE,
+    sliderStyle: LunarisQsSliderStyle = LunarisQsSliderStyle.ROUNDED_SQUARE,
     mediaSurface: AxMediaSurface = AxMediaSurface.CONTROL,
     tileStyle: AxQsTileStyle = AxQsTileStyle.PILL,
 ): RoundedCornerShape {

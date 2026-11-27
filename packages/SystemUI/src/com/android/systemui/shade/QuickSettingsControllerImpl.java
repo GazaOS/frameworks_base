@@ -2990,7 +2990,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
             if (STATUS_BAR_QUICK_QS_PULLDOWN.equals(key)) {
                 mOneFingerQuickSettingsIntercept = TunerService.parseInteger(newValue, 0);
             } else if (QS_SPLIT_SHADE_SETTING.equals(key)) {
-                boolean enabled = TunerService.parseInteger(newValue, 0) != 0;
+                boolean enabled = TunerService.parseInteger(newValue, 1) != 0;
                 if (mQsSplitShadeEnabledLegacy != enabled) {
                     mPanelViewControllerLazy.get().cancelHeightAnimator();
                     cancelShadeOverscroll();

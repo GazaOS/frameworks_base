@@ -935,7 +935,7 @@ constructor(
         control: AxQsControl,
     ): LunarisQsSliderStyle =
         sliderStyles[LunarisQsSliderKey(layout, control)]
-            ?: LunarisQsSliderStyle.M3_EXPRESSIVE
+            ?: LunarisQsSliderStyle.ROUNDED_SQUARE
 
     fun setSliderStyle(
         layout: AxQsLayout,
